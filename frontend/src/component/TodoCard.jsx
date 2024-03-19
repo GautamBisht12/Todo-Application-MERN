@@ -24,7 +24,7 @@ const TodoCard = () => {
       {todos?.map((todo) => (
         <div
           key={todo._id}
-          className="w-[34vw] mx-auto mt-4 bg-white shadow-md rounded-md p-4 px-6"
+          className="w-[34vw] mx-auto mt-4 mr-4 bg-white shadow-md rounded-md p-4 px-6"
         >
           <h3 className="text-lg font-semibold text-center text-gray-800">
             {todo.title}
