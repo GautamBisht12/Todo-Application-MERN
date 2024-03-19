@@ -31,7 +31,6 @@ const useLogin = () => {
       dispatch(setLoading(true));
 
       console.log(formData);
-
       const { email, password } = formData;
       console.log(email, password); //this is printing
       if (!email || !password) {
@@ -52,14 +51,15 @@ const useLogin = () => {
 
       dispatch(setLoading(false));
 
-      console.log("Login successful:", response.data);
+      console.log("Login successful:", response.data.user);
       console.log("Access token:", response.data.accessToken);
 
       const token = response.data.accessToken;
-
+      const username = response.data.user.username;
       //store in localStorage
       localStorage.setItem("checkIfUserLoggedIn", "true");
       localStorage.setItem("accessToken", token);
+      localStorage.setItem("username", username);
 
       toast.success("User Login successfully");
       navigate("/addtodo");

@@ -31,6 +31,7 @@ const useLogout = () => {
 
       navigate("/");
       localStorage.setItem("checkIfUserLoggedIn", "false");
+      localStorage.removeItem("username");
     } catch (error) {
       console.log(error);
       toast.error("Error while authenticating user ");

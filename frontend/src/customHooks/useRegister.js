@@ -2,12 +2,12 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 
 import { setLoading } from "../redux/slices/formData.slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const useRegistration = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.formData);
+
   const navigate = useNavigate();
 
   const registerUser = async (formData) => {
@@ -15,8 +15,8 @@ const useRegistration = () => {
       dispatch(setLoading(true));
 
       console.log(formData);
-      console.log(userData);
 
+      localStorage.setItem("username", formData.username);
       const { username, email, password } = formData;
       console.log(username, "user Name", email, password); //this is printing
       if (!username || !email || !password) {

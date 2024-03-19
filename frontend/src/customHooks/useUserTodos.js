@@ -2,7 +2,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setLoading } from "../redux/slices/formData.slice";
-import { userTodosData } from "../redux/slices/getAllTodos/getTodos.slice";
 
 const useUserTodo = () => {
   const accessToken = localStorage.getItem("accessToken");
@@ -32,7 +31,7 @@ const useUserTodo = () => {
         return console.log("User don't have any todos yet");
       } else {
         dispatch(setLoading(false));
-        dispatch(userTodosData(todos));
+
         console.log(todos);
 
         localStorage.setItem("userAllTodos", JSON.stringify(todos));

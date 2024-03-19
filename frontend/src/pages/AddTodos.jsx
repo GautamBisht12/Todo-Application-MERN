@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 function AddTodo() {
   const [usertodo, setUserTodo] = useState({ title: "", todo: "" });
   const isLoading = useSelector((state) => state.formData.isLoading);
+  const username = localStorage.getItem("username");
 
   const { addUserTodo } = useAddTodo();
 
@@ -24,16 +25,15 @@ function AddTodo() {
     });
   };
 
-  // const handleDelete = () => {
-
-  // };
-
   return (
     <>
       <div className="container mx-auto px-4 py-10 min-h-[90vh]">
         <h1 className="text-3xl text-slate-300 font-bold mb-6 text-center">
-          Create a Todo
+          Welcome <span className="text-yellow-500">{username}</span> ✋
         </h1>
+        <h2 className="text-3xl text-slate-300 font-bold mb-6 text-center">
+          Create a Todo
+        </h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input
             type="text"
