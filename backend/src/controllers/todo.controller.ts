@@ -65,7 +65,14 @@ export const deleteTodo = async (req: Request, res: Response) => {
         .status(403)
         .json({ message: "Unauthorized - Todo does not belong to the user" });
     }
+
+    //delete todo
     await Todo.findByIdAndDelete(todoId);
+
+    // Remove the todoId from the user's todos
+    await User.findByIdAndUpdate(userId, {
+      $pull: { todos: todoId },
+    });
 
     return res.status(200).json({ message: "Todo deleted successfully" });
   } catch (error) {
