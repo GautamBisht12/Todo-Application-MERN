@@ -22,6 +22,7 @@ app.use(express.json());
 app.use("/api", userRouter);
 app.use("/todo", todoRouter);
 
+// for testing
 app.get("/", async (req, res) => {
   const data = await Todo.find().exec();
   res.status(200).json({ data });

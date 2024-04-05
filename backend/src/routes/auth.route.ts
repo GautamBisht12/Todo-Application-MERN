@@ -8,7 +8,7 @@ import { verifyJwt } from "../utils/auth.middleware";
 
 const router = express.Router();
 
-router.get("/");
+// router.get("/");
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/logout", verifyJwt, logoutUser);
